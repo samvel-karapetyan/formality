@@ -1,10 +1,10 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModel
 
 
 class Model:
     def __init__(self, model_name):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModelForCausalLM.from_pretrained(model_name)
+        self.model = AutoModel.from_pretrained(model_name)
 
     def __call__(self, x):
         tokenized = self.tokenizer(x, return_tensors='pt', padding=True).to(self.model.device)
